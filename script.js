@@ -200,7 +200,7 @@ function displayCurrentDayDate() {
   document.getElementById('currentDayDate').innerText = formattedDate;
 }
 
-displayCurrentDayDate();
+
 
 function resetActivities() {
   if (confirm('Are you sure you want to reset all activities? This action cannot be undone.')) {
@@ -276,3 +276,5 @@ document.addEventListener('DOMContentLoaded', requestNotificationPermission);
 setInterval(checkTime, 60000); // Check the time every 60,000 milliseconds (1 minute)
 document.getElementById('resetBtn').addEventListener('click', resetActivities);
 document.getElementById('testNotificationBtn').addEventListener('click', showNotification);
+
+displayCurrentDayDate();
