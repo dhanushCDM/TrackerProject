@@ -33,11 +33,11 @@ body {
 .mdl-data-table th:nth-child(5),
 .mdl-data-table td:nth-child(5) {
   width: 40%;
-}
-.mdl-data-table td:nth-child(5) {
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
+
+
 .mdl-layout__header-row {
     justify-content: center;
 }
