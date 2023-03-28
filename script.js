@@ -226,7 +226,7 @@ function displayCurrentDayDate() {
   const date = now.getDate();
   const year = now.getFullYear();
   const formattedDate = `${date} ${month} ${year}, ${day}`;
-  console.log("Formatted date:", formattedDate);
+
 
   document.getElementById('currentDayDate').innerText = formattedDate;
 }
