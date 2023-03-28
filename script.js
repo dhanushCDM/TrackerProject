@@ -54,7 +54,7 @@ function formatTime(time) {
 
 function formatDuration(duration) {
   const hours = Math.floor(duration / 60);
-  const minutes = duration % 60;
+  const minutes = Math.floor(duration % 60);
 
   if (hours === 0) {
     return `${minutes} mins`;
@@ -64,6 +64,7 @@ function formatDuration(duration) {
     return `${hours} hour(s) ${minutes} mins`;
   }
 }
+
 
 
 function addActivity() {
