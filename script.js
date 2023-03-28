@@ -88,13 +88,18 @@ function addActivity() {
 
 
 function calculateDuration(startTime, endTime) {
-  const [startHour, startMinute, startPeriod] = startTime.split(/[: ]/);
-  const [endHour, endMinute, endPeriod] = endTime.split(/[: ]/);
-  const start = new Date(2000, 0, 1, startHour % 12 + (startPeriod === 'PM' ? 12 : 0), startMinute);
-  const end = new Date(2000, 0, 1, endHour % 12 + (endPeriod === 'PM' ? 12 : 0), endMinute);
+  const start = new Date(`01/01/2000 ${startTime}`);
+  let end = new Date(`01/01/2000 ${endTime}`);
+
+  // If end time is less than start time, add 12 hours to the end time
+  if (end < start) {
+    end = new Date(end.getTime() + 12 * 60 * 60 * 1000);
+  }
+
   const duration = (end - start) / (1000 * 60);
   return duration.toFixed(2);
 }
+
 
 
 
