@@ -88,13 +88,26 @@ function addActivity() {
 
 function calculateDuration(startTime, endTime) {
   const start = new Date(`01/01/2000 ${startTime}`);
-  const end = new Date(`01/01/2000 ${endTime}`);
-  const duration = (end - start) / (1000 * 60);
-  const startFormatted = start.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-  const endFormatted = end.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-  return `${startFormatted} - ${endFormatted}`;
-}
+  let end = new Date(`01/01/2000 ${endTime}`);
 
+  // If end time is less than start time, add 12 hours to the end time
+  if (end < start) {
+    end = new Date(end.getTime() + 12 * 60 * 60 * 1000);
+  }
+
+  const diff = Math.abs(end - start);
+  const minutes = Math.floor(diff / 1000 / 60);
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+
+  if (hours === 0) {
+    return `${remainingMinutes} mins`;
+  } else if (remainingMinutes === 0) {
+    return `${hours} hour(s)`;
+  } else {
+    return `${hours} hour(s) ${remainingMinutes} mins`;
+  }
+}
 
 function getDefaultStartTime() {
   const currentHour = new Date();
