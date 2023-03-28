@@ -188,16 +188,16 @@ const controlKeyPressed = event.ctrlKey || event.metaKey;
 
 function displayCurrentDayDate() {
   const now = new Date();
-  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const day = days[now.getDay()];
-  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  const month = monthNames[now.getMonth()];
-  const date = now.getDate();
-  const year = now.getFullYear();
-  const formattedDate = `${date}-${month}-${year}`;
-
-  document.getElementById('currentDayDate').innerText = `${day}, ${formattedDate}`;
+  const formattedDate = new Intl.DateTimeFormat('en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    weekday: 'long'
+  }).format(now);
+  
+  document.getElementById('currentDayDate').innerText = formattedDate;
 }
+
 
 function resetActivities() {
   if (confirm('Are you sure you want to reset all activities? This action cannot be undone.')) {
