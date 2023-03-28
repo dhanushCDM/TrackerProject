@@ -143,7 +143,9 @@ function showNotification() {
       body: "Click here to enter your activity.",
     });
     notification.onclick = () => {
+      window.parent.focus();
       showModal();
+      notification.close(); 
     };
   } else if (Notification.permission !== "denied") {
     Notification.requestPermission().then((permission) => {
@@ -152,7 +154,9 @@ function showNotification() {
           body: "Click here to enter your activity.",
         });
         notification.onclick = () => {
+          window.parent.focus();
           showModal();
+          notification.close();
         };
       }
     });
