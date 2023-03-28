@@ -164,7 +164,7 @@ function showNotification() {
       body: "Click here to enter your activity.",
     });
     notification.onclick = () => {
-      window.focus(); // Change this line
+      window.parent.focus(); // Change this line
     };
   } else if (Notification.permission !== "denied") {
     Notification.requestPermission().then((permission) => {
@@ -173,7 +173,7 @@ function showNotification() {
           body: "Click here to enter your activity.",
         });
         notification.onclick = () => {
-          window.focus(); // Change this line
+          window.parent.focus(); // Change this line
         };
       }
     });
