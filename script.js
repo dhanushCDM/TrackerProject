@@ -92,18 +92,13 @@ function calculateDuration(startTime, endTime) {
 
   // If end time is less than start time, add 12 hours to the end time
   if (end < start) {
-    end = new Date(end.getTime() + 12 * 60 * 60 * 1000);
+    end = new Date(`01/02/2000 ${endTime}`);
   }
 
-  let duration = (end - start) / (1000 * 60);
-
-  // If duration is negative, add 24 hours to the duration
-  if (duration < 0) {
-    duration += 24 * 60;
-  }
-
+  const duration = (end - start) / (1000 * 60);
   return duration.toFixed(2);
 }
+
 
 function getDefaultStartTime() {
   const currentHour = new Date();
