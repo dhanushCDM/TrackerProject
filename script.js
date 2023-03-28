@@ -65,6 +65,7 @@ function formatDuration(duration) {
   }
 }
 
+
 function addActivity() {
   const activityInput = document.getElementById("activityInput").value;
   const startTime = document.getElementById("startTime").value || getDefaultStartTime();
@@ -84,14 +85,11 @@ function addActivity() {
   displayActivities();
   closeModal();
 }
-
 function calculateDuration(startTime, endTime) {
   const start = new Date(`01/01/2000 ${startTime}`);
   const end = new Date(`01/01/2000 ${endTime}`);
   const duration = (end - start) / (1000 * 60);
-  const startFormatted = start.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-  const endFormatted = end.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-  return `${startFormatted} - ${endFormatted}`;
+  return duration;
 }
 
 function getDefaultStartTime() {
