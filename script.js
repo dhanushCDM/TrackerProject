@@ -86,7 +86,6 @@ function addActivity() {
   closeModal();
 }
 
-
 function calculateDuration(startTime, endTime) {
   const start = new Date(`01/01/2000 ${startTime}`);
   let end = new Date(`01/01/2000 ${endTime}`);
@@ -96,13 +95,15 @@ function calculateDuration(startTime, endTime) {
     end = new Date(end.getTime() + 12 * 60 * 60 * 1000);
   }
 
-  const duration = (end - start) / (1000 * 60);
+  let duration = (end - start) / (1000 * 60);
+
+  // If duration is negative, add 24 hours to the duration
+  if (duration < 0) {
+    duration += 24 * 60;
+  }
+
   return duration.toFixed(2);
 }
-
-
-
-
 
 function getDefaultStartTime() {
   const currentHour = new Date();
