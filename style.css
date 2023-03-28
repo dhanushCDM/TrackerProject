@@ -1,106 +1,46 @@
 body {
-    font-family: 'Roboto', 'Helvetica', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
 }
 
-.mdl-data-table th.mdl-data-table__cell--non-numeric,
-.mdl-data-table td.mdl-data-table__cell--non-numeric {
-    text-align: left !important;
-}
 .mdl-data-table {
-    width: 100%;
-    margin-bottom: 1rem;
-}
-
-.mdl-layout__header-row {
-    justify-content: center;
-}
-
-.mdl-button {
-    margin: 0.5rem;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .page-content {
-    padding: 16px;
-}
-
-.mdl-grid {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.mdl-layout__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
 }
 
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  justify-content: center;
 }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+.mdl-data-table {
+  white-space: nowrap;
+  table-layout: fixed;
+  width: 100%;
+  max-width: 100%;
 }
 
-
-.modal h2 {
-    font-size: 24px;
-    margin-bottom: 1rem;
+.mdl-data-table th, .mdl-data-table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.modal label {
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.modal input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* Override MDL styles for table headers and cells */
 .mdl-data-table th {
-    text-align: left !important;
-    padding-left: 24px !important;
+  min-width: 100px;
 }
 
 .mdl-data-table td {
-    padding-left: 24px !important;
+  min-width: 100px;
+  max-width: 300px;
+}
+
+.mdl-data-table__cell--non-numeric:last-child {
+  max-width: 100%;
 }
