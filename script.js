@@ -88,7 +88,7 @@ function addActivity() {
 }
 
 function calculateDuration(startTime, endTime) {
-  const currentDate = getCurrentDate();
+  const currentDate = new Date().toISOString().substr(0, 10);
   const start = new Date(`${currentDate}T${startTime}`);
   let end = new Date(`${currentDate}T${endTime}`);
 
@@ -100,8 +100,6 @@ function calculateDuration(startTime, endTime) {
   const duration = (end - start) / (1000 * 60);
   return duration.toFixed(2);
 }
-
-
 
 function getDefaultStartTime() {
   const currentHour = new Date();
