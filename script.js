@@ -157,6 +157,27 @@ function showNotification() {
       }
     });
   }
+    if (!("Notification" in window)) {
+    alert("This browser does not support desktop notifications.");
+  } else if (Notification.permission === "granted") {
+    const notification = new Notification("Time to log your activity!", {
+      body: "Click here to enter your activity.",
+    });
+    notification.onclick = () => {
+      openModal(); // Change this line
+    };
+  } else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then((permission) => {
+      if (permission === "granted") {
+        const notification = new Notification("Time to log your activity!", {
+          body: "Click here to enter your activity.",
+        });
+        notification.onclick = () => {
+          openModal(); // Change this line
+        };
+      }
+    });
+  }
 }
 
 function checkTime() {
