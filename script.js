@@ -88,9 +88,13 @@ function addActivity() {
 }
 
 function calculateDuration(startTime, endTime) {
-  const currentDate = new Date().toISOString().substr(0, 10);
-  const start = new Date(`${currentDate}T${startTime}`);
-  let end = new Date(`${currentDate}T${endTime}`);
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+
+  const start = new Date(`${year}-${month}-${day}T${startTime}`);
+  let end = new Date(`${year}-${month}-${day}T${endTime}`);
 
   // If end time is less than start time, add 1 day to the end time
   if (end < start) {
