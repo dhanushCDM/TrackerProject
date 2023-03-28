@@ -97,6 +97,7 @@ function calculateDuration(startTime, endTime) {
   }
 
   const duration = (end - start) / (1000 * 60);
+  console.log(duration);
   return duration;
 }
 
