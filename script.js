@@ -70,7 +70,7 @@ function addActivity() {
   const activityInput = document.getElementById("activityInput").value;
   const startTime = document.getElementById("startTime").value || getDefaultStartTime();
   const endTime = document.getElementById("endTime").value || getCurrentHour();
-  const duration = calculateDuration(startTime, endTime);
+  const duration = formatDuration(calculateDuration(startTime, endTime));
 
   const activity = {
     date: getCurrentDate(),
@@ -85,12 +85,15 @@ function addActivity() {
   displayActivities();
   closeModal();
 }
+
+
 function calculateDuration(startTime, endTime) {
   const start = new Date(`01/01/2000 ${startTime}`);
   const end = new Date(`01/01/2000 ${endTime}`);
   const duration = (end - start) / (1000 * 60);
   return duration;
 }
+
 
 function getDefaultStartTime() {
   const currentHour = new Date();
