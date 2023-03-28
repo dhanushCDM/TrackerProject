@@ -88,9 +88,8 @@ function addActivity() {
 }
 
 function calculateDuration(startTime, endTime) {
-  const currentDate = new Date();
-  const start = new Date(currentDate.toDateString() + ' ' + startTime);
-  let end = new Date(currentDate.toDateString() + ' ' + endTime);
+  const start = new Date(`2000-01-01T${startTime}`);
+  let end = new Date(`2000-01-01T${endTime}`);
 
   // If end time is less than start time, add 1 day to the end time
   if (end < start) {
@@ -98,8 +97,9 @@ function calculateDuration(startTime, endTime) {
   }
 
   const duration = (end - start) / (1000 * 60);
-  return duration.toFixed(2);
+  return duration;
 }
+
 
 
 
