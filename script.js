@@ -71,13 +71,13 @@ function addActivity() {
   const activityInput = document.getElementById("activityInput").value;
   const startTime = document.getElementById("startTime").value || getDefaultStartTime();
   const endTime = document.getElementById("endTime").value || getCurrentHour();
-  const duration = formatDuration(calculateDuration(startTime, endTime));
+  const duration = calculateDuration(startTime, endTime); // call calculateDuration function
 
   const activity = {
     date: getCurrentDate(),
     start: startTime,
     end: endTime,
-    duration: duration,
+    duration: duration, // set duration to calculated value
     description: activityInput
   };
 
@@ -86,6 +86,7 @@ function addActivity() {
   displayActivities();
   closeModal();
 }
+
 
 function calculateDuration(startTime, endTime) {
   const start = new Date(`2000-01-01T${startTime}`);
