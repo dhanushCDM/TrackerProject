@@ -118,6 +118,14 @@ function getCurrentDate() {
 function openModal() {
   const activityModal = document.getElementById("activityModal");
   activityModal.style.display = "block";
+  
+    // Clear input fields when modal is opened
+  const activityInput = document.getElementById("activityInput");
+  const startTime = document.getElementById("startTime");
+  const endTime = document.getElementById("endTime");
+  activityInput.value = "";
+  startTime.value = "";
+  endTime.value = "";
 }
 
 function closeModal() {
