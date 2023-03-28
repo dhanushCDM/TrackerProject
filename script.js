@@ -89,10 +89,17 @@ function addActivity() {
 
 function calculateDuration(startTime, endTime) {
   const start = new Date(`01/01/2000 ${startTime}`);
-  const end = new Date(`01/01/2000 ${endTime}`);
+  let end = new Date(`01/01/2000 ${endTime}`);
+
+  // Check if end time is before start time
+  if (end < start) {
+    end = new Date(end.getTime() + 24 * 60 * 60 * 1000); // Add one day to end time
+  }
+
   const duration = (end - start) / (1000 * 60);
-  return duration;
+  return duration.toFixed(2);
 }
+
 
 
 function getDefaultStartTime() {
