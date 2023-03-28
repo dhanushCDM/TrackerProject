@@ -42,19 +42,21 @@
                 
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col">
-                        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-                            <thead>
-                                <tr>
-                                    <th class="mdl-data-table__cell--non-numeric">Date</th>
-                                    <th class="mdl-data-table__cell--non-numeric">Start Time</th>
-                                    <th class="mdl-data-table__cell--non-numeric">End Time</th>
-                                    <th class="mdl-data-table__cell--non-numeric">Duration</th>
-                                    <th class="mdl-data-table__cell--non-numeric">Activity</th>   
-                                </tr>                    
-                            </thead>
-                            <tbody id="activityTable">
-                            </tbody>
-                        </table>
+                        <div class="table-wrapper">
+                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Date</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Start Time</th>
+                                        <th class="mdl-data-table__cell--non-numeric">End Time</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Duration</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Activity</th>   
+                                    </tr>                    
+                                </thead>
+                                <tbody id="activityTable">
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="mdl-cell mdl-cell--12-col mdl-typography--text-center">
                         <button id="addActivityBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
