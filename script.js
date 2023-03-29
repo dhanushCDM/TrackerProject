@@ -44,13 +44,6 @@ row.appendChild(endCell);
   });
 }
 
-function formatTime(time) {
-  const hour = parseInt(time.substr(0, 2));
-  const minute = time.substr(3);
-  return `${hour.toString().padStart(2, '0')}:${minute}`;
-}
-
-
 function formatDuration(duration) {
   const hours = Math.floor(duration / 60);
   const minutes = Math.floor(duration % 60);
@@ -117,6 +110,7 @@ function updateDuration() {
     document.getElementById("duration").value = "";
   }
 }
+
 
 
 
