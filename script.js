@@ -71,13 +71,13 @@ function addActivity() {
   const activityInput = document.getElementById("activityInput").value;
   const startTime = document.getElementById("startTime").value || getDefaultStartTime();
   const endTime = document.getElementById("endTime").value || getCurrentHour();
-  const duration = formatDuration(calculateDuration(startTime, endTime));
+  const duration = calculateDuration(startTime, endTime); // Store duration as a number
 
   const activity = {
     date: getCurrentDate(),
     start: startTime,
     end: endTime,
-    duration: duration,
+    duration: duration, // Save duration as a number
     description: activityInput
   };
 
@@ -86,6 +86,7 @@ function addActivity() {
   displayActivities();
   closeModal();
 }
+
 
 function calculateDuration(startTime, endTime) {
   const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
