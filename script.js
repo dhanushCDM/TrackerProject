@@ -89,23 +89,23 @@ function addActivity() {
 
 
 function calculateDuration(startTime, endTime) {
-  const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
-  if (!timeRegex.test(startTime) || !timeRegex.test(endTime)) {
-    return 0;
+  function convertTo24Hour(time) {
+    const [hour, minute, ampm] = time.match(/(\d+):(\d+)\s*(AM|PM)/i).slice(1);
+    const hours = ampm.toUpperCase() === 'PM' ? (parseInt(hour) % 12) + 12 : parseInt(hour) % 12;
+    return hours * 60 + parseInt(minute);
   }
 
-  const start = new Date(`2000-01-01T${startTime}`);
-  let end = new Date(`2000-01-01T${endTime}`);
+  const startMinutes = convertTo24Hour(startTime);
+  const endMinutes = convertTo24Hour(endTime);
 
-  // If end time is less than start time, add 1 day to the end time
-  if (end < start) {
-    end = new Date(end.getTime() + 24 * 60 * 60 * 1000);
+  let duration = endMinutes - startMinutes;
+  if (duration < 0) {
+    duration += 24 * 60; // Add 1 day (in minutes) if the end time is earlier than the start time
   }
 
-  const duration = (end - start) / (1000 * 60);
-  console.log(duration);
   return duration;
 }
+
 
 
 
