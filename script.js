@@ -107,8 +107,17 @@ function calculateDuration(startTime, endTime) {
 }
 
 
+function updateDuration() {
+  const startTime = document.getElementById("startTime").value;
+  const endTime = document.getElementById("endTime").value;
 
-
+  if (startTime && endTime) {
+    const duration = calculateDuration(formatTime(startTime), formatTime(endTime));
+    document.getElementById("duration").value = formatDuration(duration);
+  } else {
+    document.getElementById("duration").value = "";
+  }
+}
 
 
 function getDefaultStartTime() {
@@ -317,5 +326,6 @@ document.addEventListener('DOMContentLoaded', requestNotificationPermission);
 setInterval(checkTime, 60000); // Check the time every 60,000 milliseconds (1 minute)
 document.getElementById('resetBtn').addEventListener('click', resetActivities);
 document.getElementById('testNotificationBtn').addEventListener('click', showNotification);
-
+document.getElementById("startTime").addEventListener("input", updateDuration);
+document.getElementById("endTime").addEventListener("input", updateDuration);
 document.addEventListener('DOMContentLoaded', displayCurrentDayDate);
