@@ -88,6 +88,11 @@ function addActivity() {
 }
 
 function calculateDuration(startTime, endTime) {
+  const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
+  if (!timeRegex.test(startTime) || !timeRegex.test(endTime)) {
+    return 0;
+  }
+
   const start = new Date(`2000-01-01T${startTime}`);
   let end = new Date(`2000-01-01T${endTime}`);
 
@@ -100,6 +105,7 @@ function calculateDuration(startTime, endTime) {
   console.log(duration);
   return duration;
 }
+
 
 
 
