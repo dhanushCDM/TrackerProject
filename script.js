@@ -44,6 +44,15 @@ row.appendChild(endCell);
   });
 }
 
+function calculateDuration(start, end) {
+  var diff = end.getTime() - start.getTime();
+  var minutes = Math.floor(diff / 60000);
+  var hours = Math.floor(minutes / 60);
+  minutes = minutes % 60;
+  return (hours > 0 ? hours + " hour(s) " : "") + (minutes > 0 ? minutes + " mins" : "");
+}
+
+
 function formatTime(time) {
   const hour = parseInt(time.substr(0, 2));
   const minute = time.substr(3);
