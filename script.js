@@ -47,10 +47,9 @@ row.appendChild(endCell);
 function formatTime(time) {
   const hour = parseInt(time.substr(0, 2));
   const minute = time.substr(3);
-  const ampm = hour >= 12 ? 'PM' : 'AM';
-  const formattedHour = hour % 12 || 12;
-  return `${formattedHour}:${minute} ${ampm}`;
+  return `${hour.toString().padStart(2, '0')}:${minute}`;
 }
+
 
 function formatDuration(duration) {
   const hours = Math.floor(duration / 60);
@@ -112,12 +111,13 @@ function updateDuration() {
   const endTime = document.getElementById("endTime").value;
 
   if (startTime && endTime) {
-    const duration = calculateDuration(formatTime(startTime), formatTime(endTime));
+    const duration = calculateDuration(startTime, endTime);
     document.getElementById("duration").value = formatDuration(duration);
   } else {
     document.getElementById("duration").value = "";
   }
 }
+
 
 
 function getDefaultStartTime() {
