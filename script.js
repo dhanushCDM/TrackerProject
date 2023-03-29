@@ -44,6 +44,15 @@ row.appendChild(endCell);
   });
 }
 
+function formatTime(time) {
+  const hour = parseInt(time.substr(0, 2));
+  const minute = time.substr(3);
+  const ampm = hour >= 12 ? 'PM' : 'AM';
+  const formattedHour = hour % 12 || 12;
+  return `${formattedHour}:${minute} ${ampm}`;
+}
+
+
 function formatDuration(duration) {
   const hours = Math.floor(duration / 60);
   const minutes = Math.floor(duration % 60);
@@ -82,21 +91,28 @@ function addActivity() {
 
 function calculateDuration(startTime, endTime) {
   function convertTo24Hour(time) {
-    const [hour, minute, ampm] = time.match(/(\d+):(\d+)\s*(AM|PM)/i).slice(1);
-    const hours = ampm.toUpperCase() === 'PM' ? (parseInt(hour) % 12) + 12 : parseInt(hour) % 12;
-    return hours * 60 + parseInt(minute);
+    const hour = parseInt(time.substr(0, 2));
+    const minute = time.substr(3, 2);
+    const ampm = time.substr(6);
+    const hour24 = ampm === "PM" && hour !== 12 ? hour + 12 : hour === 12 && ampm === "AM" ? 0 : hour;
+    return `${hour24.toString().padStart(2, '0')}:${minute}`;
   }
 
-  const startMinutes = convertTo24Hour(startTime);
-  const endMinutes = convertTo24Hour(endTime);
+  const start24 = convertTo24Hour(startTime);
+  const end24 = convertTo24Hour(endTime);
 
-  let duration = endMinutes - startMinutes;
-  if (duration < 0) {
-    duration += 24 * 60; // Add 1 day (in minutes) if the end time is earlier than the start time
+  const start = new Date(`2000-01-01T${start24}`);
+  let end = new Date(`2000-01-01T${end24}`);
+
+  // If end time is less than start time, add 1 day to the end time
+  if (end < start) {
+    end = new Date(end.getTime() + 24 * 60 * 60 * 1000);
   }
 
+  const duration = (end - start) / (1000 * 60);
   return duration;
 }
+
 
 
 function updateDuration() {
