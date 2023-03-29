@@ -33,7 +33,8 @@
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title">Menu</span>
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="#">Home</a>
+                <li><a class="mdl-navigation__link" href="#">Home</a></li>
+                <li><a class="mdl-navigation__link" href="categories.html">Categories</a></li>
             </nav>
         </div>
         <main class="mdl-layout__content">
@@ -87,7 +88,10 @@
             <label for="duration">Duration:</label>
             <input type="text" id="duration" readonly>
         </div>
-
+        <div>
+            <label for="categorySelect">Category:</label>
+            <select id="categorySelect"></select>
+        </div>
         <button id="activitySubmitBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">Submit</button>
     </div>
 </div>
