@@ -113,7 +113,18 @@ function calculateDuration(startTime, endTime) {
   return duration;
 }
 
+function populateCategorySelect() {
+    const categorySelect = document.getElementById('categorySelect');
+    const categories = JSON.parse(localStorage.getItem('categories') || '[]');
 
+    categorySelect.innerHTML = '';
+    categories.forEach((category) => {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category;
+        categorySelect.appendChild(option);
+    });
+}
 
 function updateDuration() {
   const startTime = document.getElementById("startTime").value;
@@ -164,6 +175,7 @@ function openModal() {
   startTime.value = "";
   endTime.value = "";
   duration.innerText = "";
+  populateCategorySelect();
 }
 
 function closeModal() {
