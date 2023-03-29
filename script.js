@@ -163,7 +163,7 @@ function openModal() {
   activityInput.value = "";
   startTime.value = "";
   endTime.value = "";
-  duration.value = "";
+  duration.innerText = "";
 }
 
 function closeModal() {
