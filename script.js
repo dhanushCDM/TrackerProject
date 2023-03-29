@@ -159,9 +159,11 @@ function openModal() {
   const activityInput = document.getElementById("activityInput");
   const startTime = document.getElementById("startTime");
   const endTime = document.getElementById("endTime");
+  const duration = document.getElementById("duration");
   activityInput.value = "";
   startTime.value = "";
   endTime.value = "";
+  duration.value = "";
 }
 
 function closeModal() {
