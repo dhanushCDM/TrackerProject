@@ -71,13 +71,13 @@ function addActivity() {
   const activityInput = document.getElementById("activityInput").value;
   const startTime = document.getElementById("startTime").value || getDefaultStartTime();
   const endTime = document.getElementById("endTime").value || getCurrentHour();
-  const duration = calculateDuration(startTime, endTime); // call calculateDuration function
+  const duration = formatDuration(calculateDuration(startTime, endTime));
 
   const activity = {
     date: getCurrentDate(),
     start: startTime,
     end: endTime,
-    duration: duration, // set duration to calculated value
+    duration: duration,
     description: activityInput
   };
 
@@ -87,27 +87,22 @@ function addActivity() {
   closeModal();
 }
 
+function calculateDuration(startTime, endTime) {
+  const start = new Date(`2000-01-01T${startTime}`);
+  let end = new Date(`2000-01-01T${endTime}`);
 
-function addActivity() {
-  const activityInput = document.getElementById("activityInput").value;
-  const startTime = document.getElementById("startTime").value || getDefaultStartTime();
-  const endTime = document.getElementById("endTime").value || getCurrentHour();
-  const duration = calculateDuration(startTime, endTime);
-  const formattedDuration = formatDuration(duration);
+  // If end time is less than start time, add 1 day to the end time
+  if (end < start) {
+    end = new Date(end.getTime() + 24 * 60 * 60 * 1000);
+  }
 
-  const activity = {
-    date: getCurrentDate(),
-    start: startTime,
-    end: endTime,
-    duration: formattedDuration,
-    description: activityInput
-  };
-
-  activities.push(activity);
-  localStorage.setItem('activities', JSON.stringify(activities)); // Save activities to local storage
-  displayActivities();
-  closeModal();
+  const duration = (end - start) / (1000 * 60);
+  console.log(duration);
+  return duration;
 }
+
+
+
 
 function getDefaultStartTime() {
   const currentHour = new Date();
